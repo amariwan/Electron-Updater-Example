@@ -1,0 +1,54 @@
+{
+    "name": "electron-updater-example",
+    "version": "0.1.0",
+    "main": "main.js",
+    "description": "electron-updater example project",
+    "author": {
+        "name": "Aland Mariwan",
+        "email": "app@example.com",
+        "url": "https://example.com/"
+    },
+    "scripts": {
+        "start": "electron .",
+        "dist": "electron-builder build --win --publish never",
+        "serve": "http-server wwwroot/ -p 8080"
+    },
+    "dependencies": {
+        "electron-log": "^4.3.0",
+        "electron-updater": "^4.3.5"
+    },
+    "devDependencies": {
+        "electron": "^19.0.1",
+        "electron-builder": "^22.9.1",
+        "http-server": "^14.1.0"
+    },
+    "build": {
+        "publish": [{
+            "provider": "generic",
+            "url": "http://127.0.0.1:8080/"
+        }],
+        "appId": "com.github.Aland.electronupdaterexample",
+        "mac": {
+            "category": "your.app.category.type",
+            "target": [
+                "zip",
+                "dmg"
+            ]
+        },
+        "linux": {
+            "category": "Utility",
+            "icon": "icons/icons",
+            "target": [
+                "AppImage",
+                "deb"
+            ]
+        },
+        "win": {
+            "target": "nsis",
+            "verifyUpdateCodeSignature": false,
+            "publisherName": "Some Company - Stored in cert file",
+            "certificateFile": "./certs/RootCA.pfx",
+            "certificatePassword": "Aland"
+        }
+    }
+}
